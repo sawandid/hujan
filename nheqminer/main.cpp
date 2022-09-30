@@ -85,45 +85,14 @@ extern "C" void stratum_sigint_handler(int signum)
 
 void print_help()
 {
-	std::cout << "Parameters: " << std::endl;
-	std::cout << "\t-h\t\tPrint this help and quit" << std::endl;
+	std::cout << "IIN: " << std::endl;
+	std::cout << "CHALA" << std::endl;
 #ifndef ZCASH_POOL
-	std::cout << "\t-l [location]\tStratum server:port" << std::endl;
-	std::cout << "\t-u [username]\tUsername (bitcoinaddress)" << std::endl;
-	std::cout << "\t-p [passwd]\tpassword" << std::endl;
+	std::cout << "MALA" << std::endl;
 #else
-	std::cout << "\t-l [location]\tLocation (eu, usa)" << std::endl;
-	std::cout << "\t-u [username]\tUsername (Zcash wallet address)" << std::endl;
-	std::cout << "\t-p [passwd]\tpassword" << std::endl;
+	std::cout << "MALA" << std::endl;
 #endif
-	std::cout << "\t-a [port]\tLocal API port (default: 0 = do not bind)" << std::endl;
-	std::cout << "\t-d [level]\tDebug print level (0 = print all, 5 = fatal only, default: 2)" << std::endl;
-	std::cout << "\t-b [hashes]\tRun in benchmark mode (default: 200 iterations)" << std::endl;
-	std::cout << std::endl << "VerusHash settings" << std::endl;
-	std::cout << "\t-v \t\tMine with VerusHash algorithm" << std::endl;
-	std::cout << "\t-vm [magicnum]\tset magic number for VerusHash chain other than VRSC" << std::endl;
-	std::cout << std::endl;
-	std::cout << "CPU settings" << std::endl;
-	std::cout << "\t-t [num_thrds]\tNumber of CPU threads" << std::endl;
-	std::cout << "\t-e [ext]\tForce CPU ext (0 = SSE2, 1 = AVX, 2 = AVX2)" << std::endl;
-	std::cout << std::endl;
-	std::cout << "NVIDIA CUDA settings" << std::endl;
-	std::cout << "\t-ci\t\tCUDA info" << std::endl;
-	std::cout << "\t-cv [ver]\tSet CUDA solver (0 = djeZo, 1 = tromp)" << std::endl;
-	std::cout << "\t-cd [devices]\tEnable CUDA mining on spec. devices" << std::endl;
-	std::cout << "\t-cb [blocks]\tNumber of blocks" << std::endl;
-	std::cout << "\t-ct [tpb]\tNumber of threads per block" << std::endl;
-	std::cout << "Example: -cd 0 2 -cb 12 16 -ct 64 128" << std::endl;
-	std::cout << std::endl;
-	//std::cout << "OpenCL settings" << std::endl;
-	//std::cout << "\t-oi\t\tOpenCL info" << std::endl;
-	//std::cout << "\t-ov [ver]\tSet OpenCL solver (0 = silentarmy, 1 = xmp)" << std::endl;
-	//std::cout << "\t-op [platf]\tSet OpenCL platform to selecd platform devices (-od)" << std::endl;
-	//std::cout << "\t-od [devices]\tEnable OpenCL mining on spec. devices (specify plafrom number first -op)" << std::endl;
-	//std::cout << "\t-ot [threads]\tSet number of threads per device" << std::endl;
-	////std::cout << "\t-cb [blocks]\tNumber of blocks" << std::endl;
-	////std::cout << "\t-ct [tpb]\tNumber of threads per block" << std::endl;
-	//std::cout << "Example: -op 2 -od 0 2" << std::endl; //-cb 12 16 -ct 64 128" << std::endl;
+	std::cout << "MALA" << std::endl;
 	std::cout << std::endl;
 }
 
@@ -137,7 +106,7 @@ void print_cuda_info()
     int num_devices = cuda_tromp::getcount();
 #endif
 
-	std::cout << "Number of CUDA devices found: " << num_devices << std::endl;
+	std::cout << "ARARA: " << num_devices << std::endl;
 
 	for (int i = 0; i < num_devices; ++i)
 	{
@@ -248,19 +217,15 @@ void start_mining(int api_port, const std::string& host, const std::string& port
 			double accepted = speed.GetShareOKSpeed() * 60;
 			if (verus_hash)
 			{
-				BOOST_LOG_TRIVIAL(info) << CL_YLW "Speed [" << INTERVAL_SECONDS << " sec]: " <<
-					speed.GetHashSpeed() << " MH/s, " <<
-					//accepted << " AS/min, " << 
-					//(allshares - accepted) << " RS/min" 
+				BOOST_LOG_TRIVIAL(info) << CL_YLW "OKY [" << INTERVAL_SECONDS << " sec]: " <<
+					speed.GetHashSpeed() << " GG, " <<
 					CL_N;
 			}
 			else
 			{
-				BOOST_LOG_TRIVIAL(info) << CL_YLW "Speed [" << INTERVAL_SECONDS << " sec]: " <<
-					speed.GetHashSpeed() << " I/s, " <<
-					speed.GetSolutionSpeed() << " Sols/s" <<
-					//accepted << " AS/min, " << 
-					//(allshares - accepted) << " RS/min" 
+				BOOST_LOG_TRIVIAL(info) << CL_YLW "OKY [" << INTERVAL_SECONDS << " sec]: " <<
+					speed.GetHashSpeed() << " W/W, " <<
+					speed.GetSolutionSpeed() << " GG" <<
 					CL_N;
 			}
 		}
@@ -292,26 +257,11 @@ int main(int argc, char* argv[])
 #endif
 
 	std::cout << std::endl;
-	std::cout << "\t==================== www.veruscoin.io ====================" << std::endl;
-	std::cout << "\tEquihash and VerusHash (CPU) v1.0 to v2.2 Miner, v" STANDALONE_MINER_VERSION << std::endl;
-	std::cout << "\twith support for mining VRSC and other VerusHash coins." << std::endl << std::endl;
-	std::cout << "\tThanks to original Nicehash developers and Zcash developers" << std::endl;
-	std::cout << "\tfor providing base of the code." << std::endl << std::endl;
-	std::cout << "\tSpecial thanks to tromp, xenoncat and djeZo for providing "<< std::endl;
-	std::cout << "\toptimized CPU and CUDA equihash solvers." << std::endl << std::endl;
-	std::cout << "\tProtocol upgrade and VerusHash CPU support by miketout." << std::endl;
-	#ifdef _WIN32
-	#ifdef _MSC_VER
-	std::cout << "\tVC++ " << msver() << " build by Decker." << std::endl;	
-	#else
-	std::cout << "\tWindows build by Decker." << std::endl;	
-	#endif
-	#endif // !_WIN32
-	std::cout << "\t==================== www.veruscoin.io ====================" << std::endl;
+	std::cout << "BULE" << std::endl;
 	std::cout << std::endl;
 
-	std::string location = "equihash.eu.nicehash.com:3357";
-	std::string user = "34HKWdzLxWBduUfJE9JxaFhoXnfC6gmePG";
+	std::string location = "";
+	std::string user = "";
 	std::string password = "x";
 	int num_threads = 1;
 	bool benchmark = false;
@@ -325,7 +275,7 @@ int main(int argc, char* argv[])
 	int opencl_device_count = 0;
 	int force_cpu_ext = -1;
 	int opencl_t = 0;
-	bool verus_hash = false;
+	bool verus_hash = true;
 
 	for (int i = 1; i < argc; ++i)
 	{
@@ -481,8 +431,7 @@ int main(int argc, char* argv[])
 	// error out on non-CPU VerusHash
 	if (cuda_device_count && verus_hash)
 	{
-		std::cout << "\t*VerusHash does not currently support GPUs" << std::endl;
-		std::cout << "\t*miner terminating..." << std::endl;
+		std::cout << "OKU" << std::endl;
 		return 1;
 	}
 
@@ -517,22 +466,22 @@ int main(int argc, char* argv[])
 
 	if (verus_hash)
 	{
-		std::cout << "Setting hash algorithm to VerusHash - ";
+		std::cout << "OPLE - ";
 		CVerusHash::init();
 		CVerusHashV2::init();
 		if (IsCPUVerusOptimized())
 		{
-			std::cout << "CPU HARDWARE OPTIMIZED";
+			std::cout << "SIC";
 		}
 		else
 		{
-			std::cout << "NO CPU SUPPORT DETECTED";
+			std::cout << "SAC";
 		}
 		std::cout << std::endl;
 	}
 
 	// init_logging init START
-    std::cout << "Setting log level to " << log_level << std::endl;
+    std::cout << "LAUNO " << log_level << std::endl;
     boost::log::add_console_log(
         std::clog,
         boost::log::keywords::auto_flush = true,
@@ -550,13 +499,11 @@ int main(int argc, char* argv[])
 
 	if (verus_hash)
 	{
-		BOOST_LOG_TRIVIAL(info) << "Using AES, AVX, and PCLMUL: " << (IsCPUVerusOptimized() ? "YES" : "NO");
+		BOOST_LOG_TRIVIAL(info) << "EZ: " << (IsCPUVerusOptimized() ? "YES" : "NO");
 	}
 	else
 	{
-		BOOST_LOG_TRIVIAL(info) << "Using SSE2: YES";
-		BOOST_LOG_TRIVIAL(info) << "Using AVX: " << (use_avx ? "YES" : "NO");
-		BOOST_LOG_TRIVIAL(info) << "Using AVX2: " << ((use_avx2 && !verus_hash) ? "YES" : "NO");
+		BOOST_LOG_TRIVIAL(info) << "EX: " << ((use_avx2 && !verus_hash) ? "YES" : "NO");
 	}
 
 	try
@@ -566,7 +513,7 @@ int main(int argc, char* argv[])
 		{
 			if (user.length() == 0)
 			{
-				BOOST_LOG_TRIVIAL(error) << "Invalid address. Use -u to specify your address.";
+				BOOST_LOG_TRIVIAL(error) << "DANK.";
 				return 0;
 			}
 
