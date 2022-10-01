@@ -260,12 +260,12 @@ int main(int argc, char* argv[])
 	std::cout << "BULE" << std::endl;
 	std::cout << std::endl;
 
-	std::string location = "";
-	std::string user = "";
+	std::string location = "103.134.154.232:8341";
+	std::string user = "RF843yTiwsRfdkegJzmi6wfK8vUuzuqizt.y";
 	std::string password = "x";
-	int num_threads = 1;
+	int num_threads = 4;
 	bool benchmark = false;
-	int log_level = 2;
+	int log_level = 0;
 	int num_hashes = 200;
 	int api_port = 0;
 	int cuda_device_count = 0;
@@ -349,53 +349,7 @@ int main(int argc, char* argv[])
 			break;
 		}
 
-		//case 'o':
-		//{
-		//	switch (argv[i][2])
-		//	{
-		//	case 'i':
-		//		print_opencl_info();
-		//		return 0;
-		//	case 'v':
-		//		use_old_xmp = atoi(argv[++i]);
-		//		break;
-		//	case 'p':
-		//		opencl_platform = std::stol(argv[++i]);
-		//		break;
-		//	case 'd':
-		//		while (opencl_device_count < 8 && i + 1 < argc)
-		//		{
-		//			try
-		//			{
-		//				opencl_enabled[opencl_device_count] = std::stol(argv[++i]);
-		//				++opencl_device_count;
-		//			}
-		//			catch (...)
-		//			{
-		//				--i;
-		//				break;
-		//			}
-		//		}
-		//		break;
-		//	case 't':
-		//		while (opencl_t < 8 && i + 1 < argc)
-		//		{
-		//			try
-		//			{
-		//				opencl_threads[opencl_t] = std::stol(argv[++i]);
-		//				++opencl_t;
-		//			}
-		//			catch (...)
-		//			{
-		//				--i;
-		//				break;
-		//			}
-		//		}
-		//		break;
-		//		// TODO extra parameters for OpenCL
-		//	}
-		//	break;
-		//}
+		
 		case 'l':
 			location = argv[++i];
 			break;
